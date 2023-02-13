@@ -9,6 +9,9 @@ class Post(models.Model):
     #tag
     counted_views = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
-    published_data = models.DateTimeField(null=True)
-    created_data = models.DateTimeField(auto_now_add=True)
-    updated_data = models.DateTimeField(auto_now=True)
+    published_date = models.DateTimeField(null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return "{}.{}".format(self.id,self.title)

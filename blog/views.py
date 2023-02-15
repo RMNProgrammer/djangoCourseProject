@@ -3,13 +3,14 @@ from blog.models import Post
 import datetime
 
 def blog(request):
-    posts = Post.objects.filter(published_date__lte=datetime.datetime.now()).values()
+    posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
     context = {'posts':posts}
     return render(request,'blog/blog.html',context)
 
 def posts(request,PostID):
-    post = get_object_or_404(Post,id=PostID)
-    post.counted_views += 1
-    post.save()
-    context = {'post':post}
+    published_posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
+    currentPost = get_object_or_404(published_posts,id=PostID)
+    currentPost.counted_views += 1
+    currentPost.save()
+    context = {'post':currentPost}
     return render(request,'blog/posts.html',context)

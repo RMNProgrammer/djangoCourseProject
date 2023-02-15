@@ -100,9 +100,9 @@
 						<div class="user-details row">
 							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span
 									class="lnr lnr-user"></span></p>
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date}}</a> <span
+							<p class="date col-lg-12 col-md-12 col-6"><a>{{post.published_date}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
-							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a> <span
+							<p class="view col-lg-12 col-md-12 col-6"><a>{{post.counted_views}} Views</a> <span
 									class="lnr lnr-eye"></span></p>
 							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span
 									class="lnr lnr-bubble"></span></p>
@@ -110,7 +110,7 @@
 					</div>
 					<div class="col-lg-9 col-md-9 ">
 						<div class="feature-img">
-							<img class="img-fluid" src="{% static 'img/blog/feature-img4.jpg' %}" alt="">
+							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
 						</div>
 						<a class="posts-title" href="{% url 'blog:posts' PostID=post.id %}">
 							<h3>{{post.title}}</h3>

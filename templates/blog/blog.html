@@ -28,10 +28,10 @@
 				<div class="single-cat-widget">
 					<div class="content relative">
 						<div class="overlay overlay-bg"></div>
-						    <div class="thumb">
-							    <img class="content-image img-fluid d-block mx-auto"
-								    src="{% static 'img/blog/cat-widget1.jpg' %}" alt="">
-						    </div>
+						<div class="thumb">
+							<img class="content-image img-fluid d-block mx-auto"
+								src="{% static 'img/blog/cat-widget1.jpg' %}" alt="">
+						</div>
 						<div class="content-details">
 							<h4 class="content-title mx-auto text-uppercase">Social life</h4>
 							<span></span>
@@ -86,11 +86,13 @@
 				<div class="single-post row">
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
-						{{ post.category.all|join:", " }}	
+							{% for item in post.category.all %}
+							    <li><a>{{item.name}}</a></li>
+							{% endfor %}
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.username}} /
-									{{post.author.first_name}}</a> <span class="lnr lnr-user"></span></p>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a>
+								<span class="lnr lnr-user"></span></p>
 							<p class="date col-lg-12 col-md-12 col-6"><a>{{post.published_date}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a>{{post.counted_views}} Views</a> <span

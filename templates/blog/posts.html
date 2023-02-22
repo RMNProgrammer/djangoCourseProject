@@ -25,18 +25,17 @@
 				<div class="single-post row">
 					<div class="col-lg-12">
 						<div class="feature-img">
-							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
+							<img class="img-fluid" src="{{post.image.url}}" alt="">
 						</div>
 					</div>
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
-							<li><a href="#">Food,</a></li>
-							<li><a href="#">Technology,</a></li>
-							<li><a href="#">Politics,</a></li>
-							<li><a href="#">Lifestyle</a></li>
+							{% for item in post.category.all %}
+							    <li><a>{{item.name}}</a></li>
+							{% endfor %}
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.username}} / {{post.author.first_name}}</a> <span
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a> <span
 									class="lnr lnr-user"></span></p>
 							<p class="date col-lg-12 col-md-12 col-6"><a>{{post.published_date}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
@@ -58,37 +57,34 @@
 					</div>
 				</div>
 				<div class="navigation-area">
+					<!--Point: Click on the post title to go to that page.-->
 					<div class="row">
+						{% if pre_post != None %}
 						<div
 							class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-							<div class="thumb">
-								<a href="#"><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt=""></a>
-							</div>
-							<div class="arrow">
-								<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-							</div>
 							<div class="detials">
-								<p>Prev Post</p>
-								<a href="#">
-									<h4>Space The Final Frontier</h4>
+								<a href="{% url 'blog:posts' PostID=pre_post.id %}">
+								    <p>Prev Post</p>
+							    </a>
+								<a href="{% url 'blog:posts' PostID=pre_post.id %}">
+									<h4>{{pre_post.title}}</h4>
 								</a>
 							</div>
 						</div>
+						{% endif %}
+						{% if next_post != None %}
 						<div
 							class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 							<div class="detials">
-								<p>Next Post</p>
-								<a href="#">
-									<h4>Telescopes 101</h4>
+								<a href="{% url 'blog:posts' PostID=next_post.id %}">
+								    <p>Next Post</p>
+								</a>
+								<a href="{% url 'blog:posts' PostID=next_post.id %}">
+									<h4>{{next_post.title}}</h4>
 								</a>
 							</div>
-							<div class="arrow">
-								<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-							</div>
-							<div class="thumb">
-								<a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""></a>
-							</div>
 						</div>
+						{% endif %}
 					</div>
 				</div>
 				<div class="comments-area">

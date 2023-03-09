@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 import datetime
 
-def blog(request):
+def blog(request,cat_name=None):
     posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
+    if cat_name:
+        posts = posts.filter(category__name=cat_name)
     context = {'posts':posts}
     return render(request,'blog/blog.html',context)
 
@@ -26,9 +28,3 @@ def posts(request,PostID):
 
 def test(request):
     return render(request,"test.html")
-
-def blog_category(request,cat_name):
-    posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
-    posts = posts.filter(category__name=cat_name)
-    context = {'posts':posts}
-    return render(request,'blog/blog.html',context)

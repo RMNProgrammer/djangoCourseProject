@@ -1,0 +1,21 @@
+{% load blog_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% hello %}</title>
+</head>
+<body>
+    <h1>Course testing code page</h1>
+    {% totalPosts as cp %}
+    <p>Total Post: {{cp}}</p>
+    {% popularPosts %}
+    {% publishedPosts as pubpost %}
+    {% for post in pubpost %}
+        <h4>{{post}}</h4>
+        <p>{{post.content|snippet}} ...</p>
+    {% endfor %}
+</body>
+</html>

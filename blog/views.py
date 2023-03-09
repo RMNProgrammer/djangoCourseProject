@@ -23,3 +23,12 @@ def posts(request,PostID):
     currentPost.save()
     context = {'post':currentPost,'next_post':next_post,'pre_post':pre_post}
     return render(request,'blog/posts.html',context)
+
+def test(request):
+    return render(request,"test.html")
+
+def blog_category(request,cat_name):
+    posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
+    posts = posts.filter(category__name=cat_name)
+    context = {'posts':posts}
+    return render(request,'blog/blog.html',context)

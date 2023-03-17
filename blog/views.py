@@ -1,11 +1,22 @@
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 import datetime
 
-def blog(request,cat_name=None):
+def blog(request,**kwargs):
     posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
-    if cat_name:
-        posts = posts.filter(category__name=cat_name)
+    if kwargs.get('cat_name'):
+        posts = posts.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('author_username'):
+        posts = posts.filter(author__username=kwargs['author_username'])
+    posts = Paginator(posts,2)
+    try:
+        page_number = request.GET.get('page')
+        posts = posts.get_page(page_number)
+    except PageNotAnInteger:
+        pass
+    except EmptyPage:
+        pass
     context = {'posts':posts}
     return render(request,'blog/blog.html',context)
 
@@ -25,6 +36,14 @@ def posts(request,PostID):
     currentPost.save()
     context = {'post':currentPost,'next_post':next_post,'pre_post':pre_post}
     return render(request,'blog/posts.html',context)
+
+def search(request):    
+    posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
+    if request.method == 'GET':
+        if keySearch := request.GET.get('s'):
+            posts = posts.filter(content__contains=keySearch)
+    context = {'posts':posts}
+    return render(request,'blog/blog.html',context)
 
 def test(request):
     return render(request,"test.html")

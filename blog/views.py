@@ -46,4 +46,4 @@ def search(request):
     return render(request,'blog/blog.html',context)
 
 def test(request):
-    return render(request,"test.html")
+    return render(request,"test-template-tags.html")

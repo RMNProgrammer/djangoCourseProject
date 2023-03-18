@@ -30,7 +30,7 @@
 					<div class="content relative">
 						<div class="overlay overlay-bg"></div>
 						<div class="thumb">
-							<img class="content-image img-fluid d-block mx-auto"
+							<img class="content-image d-block mx-auto"
 								src="{% static 'img/blog/cat-widget1.jpg' %}" alt="">
 						</div>
 						<div class="content-details">
@@ -46,7 +46,7 @@
 					<div class="content relative">
 						<div class="overlay overlay-bg"></div>
 						<div class="thumb">
-							<img class="content-image img-fluid d-block mx-auto"
+							<img class="content-image d-block mx-auto"
 								src="{% static 'img/blog/cat-widget2.jpg' %}" alt="">
 						</div>
 						<div class="content-details">
@@ -62,7 +62,7 @@
 					<div class="content relative">
 						<div class="overlay overlay-bg"></div>
 						<div class="thumb">
-							<img class="content-image img-fluid d-block mx-auto"
+							<img class="content-image d-block mx-auto"
 								src="{% static 'img/blog/cat-widget3.jpg' %}" alt="">
 						</div>
 						<div class="content-details">
@@ -105,7 +105,7 @@
 					</div>
 					<div class="col-lg-9 col-md-9 ">
 						<div class="feature-img">
-							<img class="img-fluid" src="{{post.image.url}}" alt="">
+							<img class="blog-img" src="{{post.image.url}}" alt="">
 						</div>
 						<a class="posts-title" href="{% url 'blog:posts' PostID=post.id %}">
 							<h3>{{post.title}}</h3>

@@ -22,7 +22,7 @@
     clear: both;
     visibility: hidden;
     line-height: 0;
-    height: 0; }
+    }
   .owl-carousel .owl-stage-outer {
     position: relative;
     overflow: hidden;
@@ -30,13 +30,13 @@
     -webkit-transform: translate3d(0px, 0px, 0px); }
   .owl-carousel .owl-item {
     position: relative;
-    min-height: 1px;
     float: left;
     -webkit-backface-visibility: hidden;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none; }
   .owl-carousel .owl-item img {
     display: block;
+    height: 200px;
     width: 100%;
     -webkit-transform-style: preserve-3d; }
   .owl-carousel .owl-nav.disabled,
@@ -131,12 +131,10 @@
  */
 .owl-carousel .owl-video-wrapper {
   position: relative;
-  height: 100%;
   background: #000; }
 
 .owl-carousel .owl-video-play-icon {
   position: absolute;
-  height: 80px;
   width: 80px;
   left: 50%;
   top: 50%;
@@ -160,7 +158,6 @@
 
 .owl-carousel .owl-video-tn {
   opacity: 0;
-  height: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -169,5 +166,4 @@
 .owl-carousel .owl-video-frame {
   position: relative;
   z-index: 1;
-  height: 100%;
   width: 100%; }

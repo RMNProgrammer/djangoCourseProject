@@ -1,6 +1,6 @@
 from blog.models import Category
-from django import template
 from blog.models import Post
+from django import template
 import datetime
 
 register = template.Library()
@@ -41,3 +41,8 @@ def postCategories():
     for categoryItem in categories:
         post_cat_counter[categoryItem] = posts.filter(category=categoryItem).count()
     return {'post_cat_counter':post_cat_counter}
+
+@register.inclusion_tag('website/index-recent-blog.html')
+def recentBlog(arg=6):
+    posts = Post.objects.filter(published_date__lte=datetime.datetime.now()).order_by('-published_date')[:arg]
+    return {'last_posts':posts}

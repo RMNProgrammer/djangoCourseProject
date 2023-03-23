@@ -177,7 +177,12 @@
         </div>
     </footer>
     <!-- End footer Area -->
-
+    
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert("{{message}}")</script>
+        {% endfor %}
+    {% endif %}
     <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>

@@ -1,5 +1,5 @@
 from django import forms
-from Travel.models import Contact, Newsletter
+from Travel.models import Newsletter
 
 class NameForm(forms.Form):
     name = forms.CharField(max_length=80)
@@ -7,10 +7,11 @@ class NameForm(forms.Form):
     subject = forms.CharField(max_length=80)
     message = forms.CharField(widget=forms.Textarea)
 
-class ContactForm(forms.ModelForm):
-    class Meta:
-        model = Contact 
-        fields = '__all__'
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=80)
+    email = forms.EmailField()
+    subject = forms.CharField(max_length=80,required=False)
+    message = forms.CharField(widget=forms.Textarea)
 
 class NewsletterForm(forms.ModelForm):
     class Meta:

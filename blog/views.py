@@ -9,6 +9,8 @@ def blog(request,**kwargs):
         posts = posts.filter(category__name=kwargs['cat_name'])
     if kwargs.get('author_username'):
         posts = posts.filter(author__username=kwargs['author_username'])
+    if kwargs.get('tag_name'):
+        posts = posts.filter(tags__slug__in=[kwargs.get('tag_name')])
     posts = Paginator(posts,2)
     try:
         page_number = request.GET.get('page')

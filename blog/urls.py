@@ -7,6 +7,7 @@ urlpatterns = [
     path('',blog,name='blog'),
     path('<int:PostID>/',posts,name='posts'), 
     path('category/<str:cat_name>/',blog,name='category'),
+    path('tag/<str:tag_name>',blog,name='tag'),
     path('author/<str:author_username>/',blog,name='author'),
     path('search/',search,name='search'), 
     path('test/',test,name='test')   

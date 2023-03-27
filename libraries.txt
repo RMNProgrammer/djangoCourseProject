@@ -3,4 +3,8 @@ asgiref
 pytz
 sqlparse
 pillow
+django-robots
 django-taggit
+django-summnernote
+django-simple-captcha
+django-multi-captcha-admin

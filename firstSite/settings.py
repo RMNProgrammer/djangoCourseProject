@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'Travel.apps.TravelConfig',
-    'blog'
+    'blog',
+    'accounts'
 ]
 
 # sites framework

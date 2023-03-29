@@ -1,5 +1,5 @@
 from blog.models import Category
-from blog.models import Post
+from blog.models import Post, Comment
 from django import template
 import datetime
 
@@ -18,6 +18,10 @@ def publishedPosts():
 def totalPosts():
     postCounter = Post.objects.filter(published_date__lte=datetime.datetime.now()).count()
     return postCounter
+
+@register.simple_tag(name='comments_count')
+def function(PostID):
+    return Comment.objects.filter(post=PostID,approved=True).count()
 
 @register.filter
 def snippet(text,arg=28):

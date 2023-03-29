@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Comment
+from django.contrib import messages
+from blog.forms import CommentForm
 import datetime
 
 def blog(request,**kwargs):
@@ -25,6 +27,16 @@ def blog(request,**kwargs):
 def posts(request,PostID):
     published_posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
     currentPost = get_object_or_404(published_posts,id=PostID)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS,'Your comment send successfully.')
+        else:
+            messages.add_message(request,messages.ERROR,'Your comment did not send.')
+    elif request.method == 'GET':
+        currentPost.counted_views += 1
+        currentPost.save()
     if published_posts.first().id != currentPost.id:
         next_posts = published_posts.filter(published_date__gt=currentPost.published_date)
         next_post = next_posts[next_posts.count()-1]
@@ -34,9 +46,9 @@ def posts(request,PostID):
         pre_post = published_posts.filter(published_date__lt=currentPost.published_date)[0]
     else:
         pre_post = None
-    currentPost.counted_views += 1
-    currentPost.save()
-    context = {'post':currentPost,'next_post':next_post,'pre_post':pre_post}
+    comments = Comment.objects.filter(post=currentPost.id,approved=True)
+    form = CommentForm()
+    context = {'post':currentPost,'comments':comments,'form':form,'next_post':next_post,'pre_post':pre_post}
     return render(request,'blog/posts.html',context)
 
 def search(request):    

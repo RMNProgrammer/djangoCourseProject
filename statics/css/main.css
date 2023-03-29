@@ -2998,6 +2998,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   transform: scale(1.05);
 }
 
+#comment-user-profile{
+  max-height: 80px;
+  max-width: 80px;
+  border-radius: 50%;
+}
+
 /*--------- end recent-blog Area -------------*/
 /*-------- Start Common Page Style   -------------*/
 .link-nav {

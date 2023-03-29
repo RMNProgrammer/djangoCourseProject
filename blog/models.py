@@ -35,3 +35,19 @@ class Post(models.Model):
 
     #def snippets(self):
     #    return self.content[:27] + '...'
+
+class Comment(models.Model):
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    subject = models.TextField(max_length=80)
+    message = models.TextField(max_length=80)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    approved = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_date']
+
+    def __str__(self):
+        return self.subject

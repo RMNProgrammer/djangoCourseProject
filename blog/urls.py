@@ -1,3 +1,4 @@
+from blog.feeds import LastestEntriesFeed
 from django.urls import path
 from .views import *
 
@@ -9,6 +10,7 @@ urlpatterns = [
     path('category/<str:cat_name>/',blog,name='category'),
     path('tag/<str:tag_name>',blog,name='tag'),
     path('author/<str:author_username>/',blog,name='author'),
-    path('search/',search,name='search'), 
+    path('search/',search,name='search'),
+    path('rss/',LastestEntriesFeed()),
     path('test/',test,name='test')   
 ] 

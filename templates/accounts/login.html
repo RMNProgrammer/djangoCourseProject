@@ -7,6 +7,10 @@
     <title>Login</title>
 </head>
 <body>
-    
+    {% if request.user.is_authenticated %}
+        <p>user is authenticated as {{request.user.username}}</p>
+    {% else %}
+        <p>user is not authenticated</p>
+    {% endif %}
 </body>
 </html>

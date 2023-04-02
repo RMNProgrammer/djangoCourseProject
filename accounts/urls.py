@@ -9,5 +9,5 @@ urlpatterns = [
     # login
     path('login/',Login,name='login'),
     # logout
-    #path('logout/',logout,name='logout') 
+    path('logout/',Logout,name='logout') 
 ]

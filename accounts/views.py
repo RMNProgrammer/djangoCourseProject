@@ -1,5 +1,5 @@
+from django.contrib.auth import authenticate, login, logout 
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
 def Sign_up(request):
@@ -20,5 +20,7 @@ def Login(request):
     else:
         return redirect('/')
 
-#def logout(request):
-#    return
+def Logout(request):
+    if request.user.is_authenticated:
+        logout(request)
+    return redirect('/')

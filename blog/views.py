@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post, Comment
 from django.contrib import messages
@@ -24,6 +25,7 @@ def blog(request,**kwargs):
     context = {'posts':posts}
     return render(request,'blog/blog.html',context)
 
+@login_required
 def posts(request,PostID):
     published_posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
     currentPost = get_object_or_404(published_posts,id=PostID)
@@ -51,6 +53,7 @@ def posts(request,PostID):
     context = {'post':currentPost,'comments':comments,'form':form,'next_post':next_post,'pre_post':pre_post}
     return render(request,'blog/posts.html',context)
 
+@login_required
 def search(request):    
     posts = Post.objects.filter(published_date__lte=datetime.datetime.now())
     if request.method == 'GET':

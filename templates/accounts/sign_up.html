@@ -1,12 +1,40 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign-up</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sign Up</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}" >
+  </head>
+  <body class="text-center">
+    <form class="form-signin" method="post" action="{% url 'accounts:sign-up' %}">
+      {% csrf_token %}
+      <img src="{% static 'img/accounts/sign-up.png' %}" alt="logo" width="105" height="105">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign-up</h1>
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+      <h6>150 characters or fewer.<br>Letters, digits and @/./+/-/_ only.</h6>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password1" class="form-control" placeholder="Password" required>
+      <h6>Your password can’t be too similar to your other personal information.</h6>
+      <h6>Your password must contain at least 8 characters.</h6>
+      <h6>Your password can’t be a commonly used password.</h6>
+      <h6>Your password can’t be entirely numeric.</h6>
+      <label for="inputPassword" class="sr-only">Confirm Password</label>
+      <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+      <p class="mt-5"></p>
+    </form>
+  </body>
 </html>

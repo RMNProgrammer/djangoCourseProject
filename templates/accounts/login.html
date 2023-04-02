@@ -15,7 +15,7 @@
   <body class="text-center">
     <form class="form-signin" method="post" action="{% url 'accounts:login' %}">
       {% csrf_token %}
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="logo" width="72" height="72">
+      <img class="mb-4" src="{% static 'img/accounts/login.png' %}" alt="logo" width="105" height="105">
       <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
       <label for="inputEmail" class="sr-only">Username</label>
       <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
@@ -27,7 +27,7 @@
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <p class="mt-5"></p>
     </form>
   </body>
 </html>

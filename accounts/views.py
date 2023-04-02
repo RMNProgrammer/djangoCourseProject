@@ -1,9 +1,17 @@
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout 
-from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 def Sign_up(request):
-    return render(request,'accounts/sign_up.html')
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/accounts/login/')
+        return render(request,'accounts/sign_up.html')
+    else:
+        return redirect('/')
 
 def Login(request):
     if not request.user.is_authenticated:
@@ -16,7 +24,7 @@ def Login(request):
                 if user is not None:
                     login(request,user)
                     return redirect('/')
-        return render(request,'accounts/login.html',{'form':AuthenticationForm})
+        return render(request,'accounts/login.html')
     else:
         return redirect('/')
 

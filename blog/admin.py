@@ -4,7 +4,7 @@ from django.contrib import admin
 
 class PostAdmin(SummernoteModelAdmin):
     list_display = ('title','author','created_date','published_date','counted_views')
-    fields = ('author','title','category','tags','content','image','published_date')
+    fields = ('author','title','category','tags','content','image','login_require','published_date')
     summernote_fields = ('content',)
     #added to models.py
     #ordering = ['title']

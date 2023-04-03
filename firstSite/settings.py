@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'Travel.apps.TravelConfig',
     'blog',
-    'accounts'
+    #'accounts'
 ]
 
 # sites framework
@@ -192,3 +192,4 @@ INTERNAL_IPS = [
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+LOGIN_REDIRECT_URL = '/'

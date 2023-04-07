@@ -17,9 +17,11 @@
       {% csrf_token %}
       <img src="{% static 'img/accounts/sign-up.png' %}" alt="logo" width="105" height="105">
       <h1 class="h3 mb-3 font-weight-normal">Please sign-up</h1>
-      <label for="inputEmail" class="sr-only">Username</label>
+      <label for="inputUsername" class="sr-only">Username</label>
       <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
       <h6>150 characters or fewer.<br>Letters, digits and @/./+/-/_ only.</h6>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="email" name="email" class="form-control" maxlength="200" placeholder="Email" required>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="password1" class="form-control" placeholder="Password" required>
       <h6>Your password can’t be too similar to your other personal information.</h6>

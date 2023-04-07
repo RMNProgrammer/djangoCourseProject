@@ -17,14 +17,12 @@
       {% csrf_token %}
       <img class="mb-4" src="{% static 'img/accounts/login.png' %}" alt="logo" width="105" height="105">
       <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
-      <label for="inputEmail" class="sr-only">Username</label>
+      <label for="inputUsername" class="sr-only">Username</label>
       <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="password" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+        <a class="reset-link" href="{% url 'password_reset' %}">Forgot your password?</a>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
       <p class="mt-5"></p>

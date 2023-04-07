@@ -42,8 +42,28 @@ body {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 .form-signin input[type="password"] {
   margin-bottom: 12px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+p.size{
+  font-size: 16px;
+}
+a:hover{
+  text-decoration: none;
+  color: purple;
+}
+p.not-valid-message{
+  color: red;
+  font-weight: bolder;
+  margin: 25px auto;
+}
+h6{
+  margin-bottom: 8px;
 }

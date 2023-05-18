@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from Travel.forms import ContactForm, NewsletterForm
 from django.shortcuts import render
 from django.contrib import messages
@@ -34,14 +34,3 @@ def newsletter(request):
             return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
-
-def test_form(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Your message has been successfully sent to support.')
-        else:
-            return HttpResponse('An error occurred, try again.')
-    form = ContactForm()
-    return render(request,"test-form.html",{'form':form})

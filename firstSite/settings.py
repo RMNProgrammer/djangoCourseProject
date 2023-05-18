@@ -33,10 +33,21 @@ INSTALLED_APPS = [
     'captcha',
     'taggit',
     'django_extensions',
+    'compressor',
     'Travel.apps.TravelConfig',
     'blog',
     'accounts'
 ]
+
+# django-compress settings
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder'
+)
+
+COMPRESS_ENABLED = True
 
 # robots 
 ROBOTS_USE_HOST = False

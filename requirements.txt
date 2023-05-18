@@ -1,11 +1,9 @@
 Django>3.2,<3.3
 pillow
-#Faker
 django-multi-captcha-admin
 django-simple-captcha
 django-debug-toolbar
 django-summnernote
-#django-compressor
-#django-utils-six
+django_compressor
 django-taggit
 django-robots

@@ -66,6 +66,3 @@ def search(request):
             posts = posts.filter(content__contains=keySearch)
     context = {'posts':posts}
     return render(request,'blog/blog.html',context)
-
-def test(request):
-    return render(request,"test-template-tags.html")

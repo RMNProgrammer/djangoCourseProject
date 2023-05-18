@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-$fm0(&_x3$8w8w$u4qp!=73$=tvin5qfceq#nrqcnem3f!yjs=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1:8000"]
+ALLOWED_HOSTS = ["travelista.ir","www.travelista.ir"]
 
 #site framework
 SITE_ID = 2
